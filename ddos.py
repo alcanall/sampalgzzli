@@ -28,7 +28,7 @@ Pacotes = [codecs.decode("53414d5090d91d4d611e700a465b00","hex_codec"),#p
                        ]
 
 
-print("Melakukan serangan terhadap IP: %s PORT: %s"%(orgip,port))
+print("Melakukan serangan ddos terhadap IP: %s PORT: %s"%(orgip,port))
 
             
 
